@@ -142,7 +142,7 @@ def get_city(city):
         if item['name'].lower() == city.lower():
             cities.append(parsed_json[idx])
             return cities
-			
+
 def get_cities_id(city_list):
     """Функция возвращает спиок id городов из списка данных городов"""
     city_list_id = [str(x['id']) for x in city_list]
@@ -244,7 +244,7 @@ def start():
                 city = get_cities_id(city)
                 data = get_data_weather(city, APP_ID,'weather')                
                 write_to_db(data, con, 'weather')
-				print('Данные в БД по городу {} сохранены'.format(city_name))
+                print('Данные в БД по городу {} сохранены'.format(city_name))
         if start == '2':
             country_name = input('Введите название страны ')            
             country = get_cities_by_country(country_name)         
@@ -253,7 +253,7 @@ def start():
             else:                
                 data = get_full_data(country)
                 write_to_db(data, con, 'weather')
-				print('Данные в БД по коду страны {} сохранены'.format(country_name))
+                print('Данные в БД по коду страны {} сохранены'.format(country_name))
                 API_file = open(os.path.join(DIR,'weather_api.json'), 'w',encoding = 'UTF-8')
                 json.dump(data,API_file, indent = 2)
         if start == '3':
